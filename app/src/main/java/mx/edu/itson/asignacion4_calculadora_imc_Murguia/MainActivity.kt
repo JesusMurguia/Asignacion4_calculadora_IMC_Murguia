@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         calcular.setOnClickListener {
             imc.setText(calcularIMC(weight.text.toString().toFloat(),height.text.toString().toFloat()).toString())
             range.setText(calcularCategoria(imc.text.toString().toFloat()))
+            calcularColorRange(range)
         }
     }
 
@@ -40,6 +41,11 @@ class MainActivity : AppCompatActivity() {
             imc >40 ->  "Obesity grade 3"
             else -> imc.toString()
         }
+
+    fun calcularColorRange(range:TextView){
+        if(range.text.toString()=="Normal") range.setBackgroundResource(R.color.green)
+        else range.setBackgroundResource(R.color.red)
+    }
 
 
 }
